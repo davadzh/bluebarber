@@ -1,7 +1,5 @@
 package com.davadzh.bluebeard.DAL;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -12,18 +10,18 @@ public class MasterWorkType implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
+//    @Column(nullable = false)
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "master_id")
+    @JoinColumn(name = "master_id", nullable = false)
 //    @JsonIgnoreProperties(value = {"applications", "hibernateLazyInitializer"})
     Master master;
 
+//    @Column(nullable = false)
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "work_type_id")
+    @JoinColumn(name = "work_type_id", nullable = false)
     WorkType workType;
 
-    public MasterWorkType() {
-
-    }
+    public MasterWorkType() { }
 
     public Long getId() {
         return id;

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -33,5 +34,9 @@ public class MasterService implements IMasterService {
                 .filter(masterWorkType -> masterWorkType.getWorkType().getId() == workTypeId)
                 .map(masterWorkType -> masterWorkType.getMaster())
                 .collect(Collectors.toList());
+    }
+
+    public Optional<Master> findMasterById(Long masterId) {
+        return masterRepository.findById(masterId);
     }
 }

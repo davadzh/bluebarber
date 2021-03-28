@@ -1,13 +1,13 @@
-package com.davadzh.bluebeard.controllers;
+package com.davadzh.bluebeard.Controllers;
+import com.davadzh.bluebeard.BLL.Core.Response;
 import com.davadzh.bluebeard.BLL.Services.WorkTypeService.IWorkTypeService;
-import com.davadzh.bluebeard.BLL.Services.WorkTypeService.WorkTypeService;
-import com.davadzh.bluebeard.DAL.MasterWorkType;
 import com.davadzh.bluebeard.DAL.WorkType;
-import com.davadzh.bluebeard.DTO.GetWorkTypesByMasterIdDto;
-import com.davadzh.bluebeard.DTO.WorkTypeDto;
-import org.json.JSONObject;
+import com.davadzh.bluebeard.DTO.MasterDtos.GetWorkTypesByMasterIdDto;
+import com.davadzh.bluebeard.DTO.WorkTypeDtos.WorkTypeDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+
 import java.util.*;
 
 @RestController
@@ -31,10 +31,12 @@ public class WorkTypeController {
 //    }
 
     @GetMapping ("/getworktypes")
-    List<WorkType> getWorkTypes() {
+    Response<List<WorkType>> getWorkTypes() {
         var workTypes = workTypeService.getWorkTypes();
 
-        return workTypes;
+        Response<List<WorkType>> res = new Response<>(workTypes);
+
+        return res;
     }
 
     @PostMapping("/addworktype")

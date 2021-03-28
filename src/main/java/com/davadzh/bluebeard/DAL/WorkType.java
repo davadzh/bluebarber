@@ -1,13 +1,10 @@
 package com.davadzh.bluebeard.DAL;
 
-import com.davadzh.bluebeard.DTO.WorkTypeDto;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.davadzh.bluebeard.DTO.WorkTypeDtos.WorkTypeDto;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Table(name = "work_type")
@@ -24,6 +21,9 @@ public class WorkType implements Serializable {
 
     @OneToMany(mappedBy = "workType", cascade = CascadeType.ALL, orphanRemoval = true)
     List<MasterWorkType> masterWorkTypes;
+
+    @OneToMany(mappedBy = "workType", cascade = CascadeType.ALL, orphanRemoval = true)
+    List<Record> records;
 
 //    public List<MasterWorkType> getMasterWorkTypes() {
 //        return masterWorkTypes;

@@ -25,6 +25,9 @@ public class Master implements Serializable {
     @OneToMany(mappedBy = "master", cascade = CascadeType.ALL, orphanRemoval = true)
     List<MasterWorkType> masterWorkTypes;
 
+    @OneToMany(mappedBy = "master", cascade = CascadeType.ALL, orphanRemoval = true)
+    List<Record> records;
+
     public Master() {
 
     }

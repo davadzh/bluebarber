@@ -1,4 +1,4 @@
-package com.davadzh.bluebeard.controllers;
+package com.davadzh.bluebeard.Controllers;
 import org.json.JSONObject;
 import org.springframework.web.bind.annotation.*;
 import java.util.*;
