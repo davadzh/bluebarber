@@ -12,6 +12,10 @@ import com.davadzh.bluebeard.DAL.WorkType.WorkTypeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.Clock;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -51,6 +55,7 @@ public class WorkTypeService implements IWorkTypeService {
 
         workType.setName(updateWorkTypeDto.name);
         workType.setPrice(updateWorkTypeDto.price);
+        workType.setModifyDate(LocalDateTime.now(Clock.systemUTC()));
         workTypeRepository.save(workType);
 
         return workType;

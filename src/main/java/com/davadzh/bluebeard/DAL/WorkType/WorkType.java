@@ -1,5 +1,6 @@
 package com.davadzh.bluebeard.DAL.WorkType;
 
+import com.davadzh.bluebeard.DAL.BaseEntity;
 import com.davadzh.bluebeard.DAL.MasterWorkType.MasterWorkType;
 import com.davadzh.bluebeard.DAL.Record.Record;
 import com.davadzh.bluebeard.DTO.WorkTypeDtos.AddWorkTypeDto;
@@ -10,10 +11,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "work_type")
-public class WorkType implements Serializable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+public class WorkType extends BaseEntity implements Serializable {
 
     @Column(unique = true, nullable = false)
     private String name;
@@ -39,6 +37,7 @@ public class WorkType implements Serializable {
     }
 
     public WorkType(AddWorkTypeDto addWorkTypeDto) {
+        super();
         this.name = addWorkTypeDto.name;
         this.price = addWorkTypeDto.price;
     }
@@ -49,14 +48,6 @@ public class WorkType implements Serializable {
 
     public void setPrice(Float price) {
         this.price = price;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getName() {

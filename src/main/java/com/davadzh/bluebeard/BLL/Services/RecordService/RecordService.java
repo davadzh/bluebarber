@@ -13,7 +13,13 @@ import com.davadzh.bluebeard.DAL.WorkType.WorkTypeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.Clock;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.TimeZone;
 import java.util.stream.Collectors;
 
 @Service
@@ -49,14 +55,18 @@ public class RecordService implements IRecordService {
         var master = masterService.findMasterById(record.masterId)
                 .orElseThrow(() -> new NotFoundException(ExceptionMessages.MASTER_NOT_FOUND));
 
-        var busyMaster = recordRepository
+        var isMasterBusy = recordRepository
                 .findAll()
                 .stream()
-                .filter(rec -> rec.getMaster().getId().equals(record.masterId)
-                            && rec.getRecordDate() == record.recordDate)
-                .collect(Collectors.toList());
+                .filter(rec -> rec.getMaster().getId().equals(record.masterId))
+                .map(rec -> rec.getRecordDate().get(Calendar.YEAR) == record.recordDate.get(Calendar.YEAR)
+                        && rec.getRecordDate().get(Calendar.MONTH) == record.recordDate.get(Calendar.MONTH)
+                        && rec.getRecordDate().get(Calendar.DAY_OF_MONTH) == record.recordDate.get(Calendar.DAY_OF_MONTH)
+                        && rec.getRecordDate().get(Calendar.HOUR_OF_DAY) == record.recordDate.get(Calendar.HOUR_OF_DAY)
+                        && rec.getRecordDate().get(Calendar.MINUTE) == record.recordDate.get(Calendar.MINUTE))
+                .findAny();
 
-        if (!busyMaster.isEmpty())
+        if (isMasterBusy.isPresent())
             throw new BadRequestException(ExceptionMessages.MASTER_IS_BUSY);
 
         var workType = workTypeService.findWorkTypeById(record.workTypeId)
@@ -91,6 +101,7 @@ public class RecordService implements IRecordService {
         record.setClientPhone(addCustomerToRecordDto.clientPhone);
         record.setClientEmail(addCustomerToRecordDto.clientEmail);
         record.setConfirmed(true);
+        record.setModifyDate(LocalDateTime.now(Clock.systemUTC()));
 
         recordRepository.save(record);
 
@@ -108,6 +119,7 @@ public class RecordService implements IRecordService {
 
         record.setConfirmed(false);
         record.setCanceled(true);
+        record.setModifyDate(LocalDateTime.now(Clock.systemUTC()));
 
         recordRepository.save(record);
 
@@ -132,6 +144,8 @@ public class RecordService implements IRecordService {
         record.setClientName(updateRecordDto.clientName);
         record.setClientPhone(updateRecordDto.clientPhone);
         record.setClientEmail(updateRecordDto.clientEmail);
+        record.setModifyDate(LocalDateTime.now(Clock.systemUTC()));
+
         recordRepository.save(record);
 
         return record;

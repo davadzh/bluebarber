@@ -1,30 +1,33 @@
 package com.davadzh.bluebeard.DAL.Record;
 
+import com.davadzh.bluebeard.DAL.BaseEntity;
 import com.davadzh.bluebeard.DAL.Master.Master;
 import com.davadzh.bluebeard.DAL.WorkType.WorkType;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.time.Instant;
 import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.ZoneOffset;
+import java.util.Calendar;
+import java.util.TimeZone;
 
 @Entity
-public class Record implements Serializable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
+public class Record extends BaseEntity implements Serializable {
 
 //    @Column(nullable = false)
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "master_id", nullable = false)
-Master master;
+    Master master;
 
 //    @Column(nullable = false)
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "work_type_id", nullable = false)
-WorkType workType;
+    WorkType workType;
 
     @Column(nullable = false)
-    LocalDate recordDate;
+    Calendar recordDate;
 
     @Column(nullable = true)
     String clientName;
@@ -45,13 +48,13 @@ WorkType workType;
 
     public Record(Master master,
                   WorkType workType,
-                  LocalDate recordDate,
+                  Calendar recordDate,
                   String clientName,
                   String clientPhone,
                   String clientEmail,
                   boolean isConfirmed,
-                  boolean isCanceled){
-
+                  boolean isCanceled) {
+        super();
         this.master = master;
         this.workType = workType;
         this.recordDate = recordDate;
@@ -62,13 +65,7 @@ WorkType workType;
         this.isCanceled = isCanceled;
     }
 
-    public Long getId() {
-        return id;
-    }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public Master getMaster() {
         return master;
@@ -86,11 +83,12 @@ WorkType workType;
         this.workType = workType;
     }
 
-    public LocalDate getRecordDate() {
+    public Calendar getRecordDate() {
+        recordDate.setTimeZone(TimeZone.getTimeZone("UTC"));
         return recordDate;
     }
 
-    public void setRecordDate(LocalDate recordDate) {
+    public void setRecordDate(Calendar recordDate) {
         this.recordDate = recordDate;
     }
 

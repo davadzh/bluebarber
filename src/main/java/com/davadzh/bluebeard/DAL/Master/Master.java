@@ -1,5 +1,6 @@
 package com.davadzh.bluebeard.DAL.Master;
 
+import com.davadzh.bluebeard.DAL.BaseEntity;
 import com.davadzh.bluebeard.DAL.MasterWorkType.MasterWorkType;
 import com.davadzh.bluebeard.DAL.Record.Record;
 import com.davadzh.bluebeard.DTO.MasterDtos.AddMasterDto;
@@ -10,11 +11,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "master")
-public class Master implements Serializable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
-
+public class Master extends BaseEntity implements Serializable {
     @Column(nullable = false)
     String fullName;
 
@@ -33,17 +30,10 @@ public class Master implements Serializable {
     public Master() { }
 
     public Master(AddMasterDto addMasterDto) {
+        super();
         fullName = addMasterDto.fullName;
         age = addMasterDto.age;
         position = addMasterDto.position;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getFullName() {

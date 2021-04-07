@@ -12,6 +12,10 @@ import com.davadzh.bluebeard.DAL.MasterWorkType.MasterWorkTypeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.Clock;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -57,6 +61,7 @@ public class MasterService implements IMasterService {
     @Override
     public Master addMaster(AddMasterDto addMasterDto) {
         var master = new Master(addMasterDto);
+
         masterRepository.save(master);
 
         return master;
@@ -71,6 +76,8 @@ public class MasterService implements IMasterService {
         master.setFullName(updateMasterDto.fullName);
         master.setAge(updateMasterDto.age);
         master.setPosition(updateMasterDto.position);
+        master.setModifyDate(LocalDateTime.now(Clock.systemUTC()));
+
         masterRepository.save(master);
 
         return master;

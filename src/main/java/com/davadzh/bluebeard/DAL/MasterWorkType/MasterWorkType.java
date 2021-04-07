@@ -1,5 +1,6 @@
 package com.davadzh.bluebeard.DAL.MasterWorkType;
 
+import com.davadzh.bluebeard.DAL.BaseEntity;
 import com.davadzh.bluebeard.DAL.Master.Master;
 import com.davadzh.bluebeard.DAL.WorkType.WorkType;
 

@@ -1,6 +1,5 @@
 package com.davadzh.bluebeard.BLL.Core;
 
-import com.davadzh.bluebeard.DTO.CoreDto.ResponseDto;
 import com.sun.istack.Nullable;
 
 public class Response<T> {
