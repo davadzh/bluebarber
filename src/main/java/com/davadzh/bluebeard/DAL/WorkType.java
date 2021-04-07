@@ -1,6 +1,6 @@
 package com.davadzh.bluebeard.DAL;
 
-import com.davadzh.bluebeard.DTO.WorkTypeDtos.WorkTypeDto;
+import com.davadzh.bluebeard.DTO.WorkTypeDtos.AddWorkTypeDto;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -36,9 +36,9 @@ public class WorkType implements Serializable {
     public WorkType() {
     }
 
-    public WorkType(WorkTypeDto workTypeDto) {
-        this.name = workTypeDto.name;
-        this.price = workTypeDto.price;
+    public WorkType(AddWorkTypeDto addWorkTypeDto) {
+        this.name = addWorkTypeDto.name;
+        this.price = addWorkTypeDto.price;
     }
 
     public Float getPrice() {

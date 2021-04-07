@@ -1,5 +1,7 @@
 package com.davadzh.bluebeard.DAL;
 
+import com.davadzh.bluebeard.DTO.MasterDtos.AddMasterDto;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -28,8 +30,12 @@ public class Master implements Serializable {
     @OneToMany(mappedBy = "master", cascade = CascadeType.ALL, orphanRemoval = true)
     List<Record> records;
 
-    public Master() {
+    public Master() { }
 
+    public Master(AddMasterDto addMasterDto) {
+        fullName = addMasterDto.fullName;
+        age = addMasterDto.age;
+        position = addMasterDto.position;
     }
 
     public Long getId() {

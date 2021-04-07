@@ -1,7 +1,10 @@
 package com.davadzh.bluebeard.BLL.Services.WorkTypeService;
 
 import com.davadzh.bluebeard.DAL.WorkType;
-import com.davadzh.bluebeard.DTO.WorkTypeDtos.WorkTypeDto;
+import com.davadzh.bluebeard.DTO.MasterDtos.GetWorkTypesByMasterIdDto;
+import com.davadzh.bluebeard.DTO.WorkTypeDtos.AddWorkTypeDto;
+import com.davadzh.bluebeard.DTO.WorkTypeDtos.DeleteWorkTypeDto;
+import com.davadzh.bluebeard.DTO.WorkTypeDtos.UpdateWorkTypeDto;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,7 +13,9 @@ import java.util.Optional;
 @Service
 public interface IWorkTypeService {
     List<WorkType> getWorkTypes();
-    WorkType addWorkType(WorkTypeDto workTypeDto);
-    List<WorkType> getWorkTypesByMasterId(Long masterId);
+    WorkType addWorkType(AddWorkTypeDto addWorkTypeDto);
+    WorkType updateWorkType(UpdateWorkTypeDto updateWorkTypeDto);
+    WorkType deleteWorkType(DeleteWorkTypeDto deleteWorkTypeDto);
+    List<WorkType> getWorkTypesByMasterId(GetWorkTypesByMasterIdDto getWorkTypesByMasterIdDto);
     Optional<WorkType> findWorkTypeById(Long workTypeId);
 }

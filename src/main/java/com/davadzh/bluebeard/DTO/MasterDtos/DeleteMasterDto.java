@@ -1,5 +1,5 @@
 package com.davadzh.bluebeard.DTO.MasterDtos;
 
-public class GetWorkTypesByMasterIdDto {
+public class DeleteMasterDto {
     public Long masterId;
 }

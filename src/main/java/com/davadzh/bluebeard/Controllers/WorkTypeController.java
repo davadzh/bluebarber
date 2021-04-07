@@ -3,10 +3,11 @@ import com.davadzh.bluebeard.BLL.Core.Response;
 import com.davadzh.bluebeard.BLL.Services.WorkTypeService.IWorkTypeService;
 import com.davadzh.bluebeard.DAL.WorkType;
 import com.davadzh.bluebeard.DTO.MasterDtos.GetWorkTypesByMasterIdDto;
-import com.davadzh.bluebeard.DTO.WorkTypeDtos.WorkTypeDto;
+import com.davadzh.bluebeard.DTO.WorkTypeDtos.AddWorkTypeDto;
+import com.davadzh.bluebeard.DTO.WorkTypeDtos.DeleteWorkTypeDto;
+import com.davadzh.bluebeard.DTO.WorkTypeDtos.UpdateWorkTypeDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import java.util.*;
 
@@ -17,39 +18,42 @@ public class WorkTypeController {
     private IWorkTypeService workTypeService;
 
     @Autowired
-    public void setWorkTypeService(IWorkTypeService workTypeService){
+    public void setWorkTypeServices(IWorkTypeService workTypeService){
         this.workTypeService = workTypeService;
     }
-
-//    private List<WorkType> workTypes = new ArrayList<>();
-
-//    @PostMapping
-//    public String postText(@RequestBody Map<String, String> body) {
-//        JSONObject jsonObject = new JSONObject(body);
-////        workTypes.add(jsonObject.toString());
-//        return jsonObject.toString() + " is added";
-//    }
 
     @GetMapping ("/getworktypes")
     Response<List<WorkType>> getWorkTypes() {
         var workTypes = workTypeService.getWorkTypes();
 
-        Response<List<WorkType>> res = new Response<>(workTypes);
-
-        return res;
+        return new Response<>(workTypes);
     }
 
     @PostMapping("/addworktype")
-    WorkType addWorkType(@RequestBody WorkTypeDto workTypeDto) {
-        var newWorkType = workTypeService.addWorkType(workTypeDto);
+    Response<WorkType> addWorkType(@RequestBody AddWorkTypeDto addWorkTypeDto) {
+        var newWorkType = workTypeService.addWorkType(addWorkTypeDto);
 
-        return newWorkType;
+        return new Response<>(newWorkType);
     }
 
     @PostMapping("/getWorkTypesByMasterId")
-    List<WorkType> getWorkTypesByMasterId(@RequestBody GetWorkTypesByMasterIdDto getWorkTypesByMasterIdDto) {
-        var workTypes = workTypeService.getWorkTypesByMasterId(getWorkTypesByMasterIdDto.id);
+    Response<List<WorkType>> getWorkTypesByMasterId(@RequestBody GetWorkTypesByMasterIdDto getWorkTypesByMasterIdDto) {
+        var workTypes = workTypeService.getWorkTypesByMasterId(getWorkTypesByMasterIdDto);
 
-        return workTypes;
+        return new Response<>(workTypes);
+    }
+
+    @PutMapping("/updateworktype")
+    Response<WorkType> updateWorkType(@RequestBody UpdateWorkTypeDto updateWorkTypeDto) {
+        var workType = workTypeService.updateWorkType(updateWorkTypeDto);
+
+        return new Response<>(workType);
+    }
+
+    @DeleteMapping("/deleteworktype")
+    Response<WorkType> deleteWorkType(@RequestBody DeleteWorkTypeDto deleteWorkTypeDto) {
+        var workType = workTypeService.deleteWorkType(deleteWorkTypeDto);
+
+        return new Response<>(workType);
     }
 }

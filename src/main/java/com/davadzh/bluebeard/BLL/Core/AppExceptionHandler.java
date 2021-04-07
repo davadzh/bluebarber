@@ -1,5 +1,6 @@
 package com.davadzh.bluebeard.BLL.Core;
 
+import com.davadzh.bluebeard.BLL.Exceptions.BadRequestException;
 import com.davadzh.bluebeard.BLL.Exceptions.NotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,5 +15,10 @@ public class AppExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(NotFoundException.class)
     public ResponseEntity<ErrorResponse> NotFoundException(NotFoundException ex) {
         return new ResponseEntity<>(new ErrorResponse(ex.getMessage()), HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(BadRequestException.class)
+    public ResponseEntity<ErrorResponse> BadRequestException(BadRequestException ex) {
+        return new ResponseEntity<>(new ErrorResponse(ex.getMessage()), HttpStatus.BAD_REQUEST);
     }
 }

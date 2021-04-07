@@ -1,7 +1,11 @@
 package com.davadzh.bluebeard.Controllers;
 
+import com.davadzh.bluebeard.BLL.Core.Response;
 import com.davadzh.bluebeard.BLL.Services.MasterService.IMasterService;
 import com.davadzh.bluebeard.DAL.Master;
+import com.davadzh.bluebeard.DTO.MasterDtos.AddMasterDto;
+import com.davadzh.bluebeard.DTO.MasterDtos.DeleteMasterDto;
+import com.davadzh.bluebeard.DTO.MasterDtos.UpdateMasterDto;
 import com.davadzh.bluebeard.DTO.WorkTypeDtos.GetMastersByWorkTypeIdDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -15,29 +19,43 @@ public class MasterController {
     private IMasterService masterService;
 
     @Autowired
-    public void setMasterService(IMasterService masterService){
+    public void setMasterServices(IMasterService masterService){
         this.masterService = masterService;
     }
 
     @GetMapping("/getmasters")
-    List<Master> getMasters() {
+    Response<List<Master>> getMasters() {
         var masters = masterService.getMasters();
 
-        return masters;
+        return new Response<>(masters);
     }
 
     @PostMapping("/getMastersByWorkTypeId")
-    List<Master> getMastersByWorkTypeId(@RequestBody GetMastersByWorkTypeIdDto getMastersByWorkTypeIdDto) {
-        var masters = masterService.getMastersByWorkTypeId(getMastersByWorkTypeIdDto.id);
+    Response<List<Master>> getMastersByWorkTypeId(@RequestBody GetMastersByWorkTypeIdDto getMastersByWorkTypeIdDto) {
+        var masters = masterService.getMastersByWorkTypeId(getMastersByWorkTypeIdDto);
 
-        return masters;
+        return new Response<>(masters);
     }
 
-//    @PostMapping
-//    WorkType addWorkType(@RequestBody WorkTypeDto workTypeDto) {
-//        var newWorkType = workTypeService.addWorkType(workTypeDto);
-//
-//        return newWorkType;
-//    }
+    @PostMapping("/addmaster")
+    Response<Master> addMaster(@RequestBody AddMasterDto addMasterDto) {
+        var newMaster = masterService.addMaster(addMasterDto);
+
+        return new Response<>(newMaster);
+    }
+
+    @PostMapping("/updatemaster")
+    Response<Master> updateMaster(@RequestBody UpdateMasterDto updateMasterDto) {
+        var master = masterService.updateMaster(updateMasterDto);
+
+        return new Response<>(master);
+    }
+
+    @DeleteMapping("/deletemaster")
+    Response<Master> deleteMaster(@RequestBody DeleteMasterDto deleteMasterDto) {
+        var master = masterService.deleteMaster(deleteMasterDto);
+
+        return new Response<>(master);
+    }
 }
 
