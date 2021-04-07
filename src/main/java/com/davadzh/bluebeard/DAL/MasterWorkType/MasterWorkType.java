@@ -8,7 +8,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "master_work_type")
+@Table(name = "master_work_type", schema = "public")
 public class MasterWorkType implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

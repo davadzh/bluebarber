@@ -14,6 +14,7 @@ import java.util.Calendar;
 import java.util.TimeZone;
 
 @Entity
+@Table(name = "record", schema = "public")
 public class Record extends BaseEntity implements Serializable {
 
 //    @Column(nullable = false)

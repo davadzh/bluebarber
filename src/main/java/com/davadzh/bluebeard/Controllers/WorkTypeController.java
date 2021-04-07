@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.*;
 
 @RestController
-@RequestMapping("api/worktype")
+@RequestMapping("api/admin/worktype")
 public class WorkTypeController {
 
     private IWorkTypeService workTypeService;

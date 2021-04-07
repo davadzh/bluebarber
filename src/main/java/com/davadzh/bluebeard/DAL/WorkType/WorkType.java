@@ -10,7 +10,7 @@ import java.io.Serializable;
 import java.util.List;
 
 @Entity
-@Table(name = "work_type")
+@Table(name = "work_type", schema = "public")
 public class WorkType extends BaseEntity implements Serializable {
 
     @Column(unique = true, nullable = false)

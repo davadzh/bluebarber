@@ -7,4 +7,6 @@ public class ExceptionMessages {
     public static final String RECORD_NOT_FOUND = "RECORD_NOT_FOUND";
     public static final String RECORD_ALREADY_CONFIRMED = "RECORD_ALREADY_CONFIRMED";
     public static final String RECORD_ALREADY_FREE = "RECORD_ALREADY_FREE";
+
+    public static final String INVALID_USERNAME_OR_PASSWORD = "INVALID_USERNAME_OR_PASSWORD";
 }

@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.*;
 
 @RestController
-@RequestMapping("api/record")
+@RequestMapping("api/admin/record")
 public class RecordController {
 
     private IRecordService recordService;

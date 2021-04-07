@@ -10,7 +10,7 @@ import java.io.Serializable;
 import java.util.List;
 
 @Entity
-@Table(name = "master")
+@Table(name = "master", schema = "public")
 public class Master extends BaseEntity implements Serializable {
     @Column(nullable = false)
     String fullName;
