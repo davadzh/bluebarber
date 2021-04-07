@@ -2,13 +2,13 @@ package com.davadzh.bluebeard.BLL.Services.WorkTypeService;
 
 import com.davadzh.bluebeard.BLL.Constants.ExceptionMessages;
 import com.davadzh.bluebeard.BLL.Exceptions.NotFoundException;
-import com.davadzh.bluebeard.DAL.WorkType;
+import com.davadzh.bluebeard.DAL.WorkType.WorkType;
 import com.davadzh.bluebeard.DTO.MasterDtos.GetWorkTypesByMasterIdDto;
 import com.davadzh.bluebeard.DTO.WorkTypeDtos.AddWorkTypeDto;
 import com.davadzh.bluebeard.DTO.WorkTypeDtos.DeleteWorkTypeDto;
 import com.davadzh.bluebeard.DTO.WorkTypeDtos.UpdateWorkTypeDto;
-import com.davadzh.bluebeard.Repositories.MasterWorkTypeRepository;
-import com.davadzh.bluebeard.Repositories.WorkTypeRepository;
+import com.davadzh.bluebeard.DAL.MasterWorkType.MasterWorkTypeRepository;
+import com.davadzh.bluebeard.DAL.WorkType.WorkTypeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

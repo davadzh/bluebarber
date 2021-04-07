@@ -1,6 +1,6 @@
 package com.davadzh.bluebeard.BLL.Services.WorkTypeService;
 
-import com.davadzh.bluebeard.DAL.WorkType;
+import com.davadzh.bluebeard.DAL.WorkType.WorkType;
 import com.davadzh.bluebeard.DTO.MasterDtos.GetWorkTypesByMasterIdDto;
 import com.davadzh.bluebeard.DTO.WorkTypeDtos.AddWorkTypeDto;
 import com.davadzh.bluebeard.DTO.WorkTypeDtos.DeleteWorkTypeDto;

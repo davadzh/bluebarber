@@ -1,5 +1,7 @@
-package com.davadzh.bluebeard.DAL;
+package com.davadzh.bluebeard.DAL.WorkType;
 
+import com.davadzh.bluebeard.DAL.MasterWorkType.MasterWorkType;
+import com.davadzh.bluebeard.DAL.Record.Record;
 import com.davadzh.bluebeard.DTO.WorkTypeDtos.AddWorkTypeDto;
 
 import javax.persistence.*;

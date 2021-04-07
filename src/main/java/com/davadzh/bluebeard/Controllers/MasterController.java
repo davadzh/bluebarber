@@ -2,7 +2,7 @@ package com.davadzh.bluebeard.Controllers;
 
 import com.davadzh.bluebeard.BLL.Core.Response;
 import com.davadzh.bluebeard.BLL.Services.MasterService.IMasterService;
-import com.davadzh.bluebeard.DAL.Master;
+import com.davadzh.bluebeard.DAL.Master.Master;
 import com.davadzh.bluebeard.DTO.MasterDtos.AddMasterDto;
 import com.davadzh.bluebeard.DTO.MasterDtos.DeleteMasterDto;
 import com.davadzh.bluebeard.DTO.MasterDtos.UpdateMasterDto;

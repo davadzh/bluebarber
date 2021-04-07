@@ -1,8 +1,9 @@
 package com.davadzh.bluebeard.Utils;
 
-import com.davadzh.bluebeard.DAL.Master;
-import com.davadzh.bluebeard.DAL.MasterWorkType;
-import com.davadzh.bluebeard.DAL.WorkType;
+import com.davadzh.bluebeard.DAL.Master.Master;
+import com.davadzh.bluebeard.DAL.MasterWorkType.MasterWorkType;
+import com.davadzh.bluebeard.DAL.Record.Record;
+import com.davadzh.bluebeard.DAL.WorkType.WorkType;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
@@ -19,6 +20,7 @@ public class HibernateSessionFactory {
                 configuration.addAnnotatedClass(Master.class);
                 configuration.addAnnotatedClass(WorkType.class);
                 configuration.addAnnotatedClass(MasterWorkType.class);
+                configuration.addAnnotatedClass(Record.class);
                 StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties());
                 sessionFactory = configuration.buildSessionFactory(builder.build());
             }catch (Exception e){

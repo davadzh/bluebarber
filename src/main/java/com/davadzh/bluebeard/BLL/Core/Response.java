@@ -18,6 +18,12 @@ public class Response<T> {
         this.error = null;
     }
 
+    public Response(String errorMessage) {
+        this.data = null;
+        this.hasError = true;
+        this.error = errorMessage;
+    }
+
 
     public T getData() {
         return data;

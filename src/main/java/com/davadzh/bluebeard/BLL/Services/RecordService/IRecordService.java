@@ -1,6 +1,6 @@
 package com.davadzh.bluebeard.BLL.Services.RecordService;
 
-import com.davadzh.bluebeard.DAL.Record;
+import com.davadzh.bluebeard.DAL.Record.Record;
 import com.davadzh.bluebeard.DTO.RecordDtos.*;
 import org.springframework.stereotype.Service;
 

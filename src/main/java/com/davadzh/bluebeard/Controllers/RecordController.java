@@ -1,7 +1,7 @@
 package com.davadzh.bluebeard.Controllers;
 import com.davadzh.bluebeard.BLL.Core.Response;
 import com.davadzh.bluebeard.BLL.Services.RecordService.IRecordService;
-import com.davadzh.bluebeard.DAL.Record;
+import com.davadzh.bluebeard.DAL.Record.Record;
 import com.davadzh.bluebeard.DTO.RecordDtos.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

@@ -1,6 +1,6 @@
 package com.davadzh.bluebeard.BLL.Services.MasterService;
 
-import com.davadzh.bluebeard.DAL.Master;
+import com.davadzh.bluebeard.DAL.Master.Master;
 import com.davadzh.bluebeard.DTO.MasterDtos.AddMasterDto;
 import com.davadzh.bluebeard.DTO.MasterDtos.DeleteMasterDto;
 import com.davadzh.bluebeard.DTO.MasterDtos.UpdateMasterDto;

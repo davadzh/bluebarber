@@ -1,8 +1,5 @@
 package com.davadzh.bluebeard.BLL.Mappers;
 
-import com.davadzh.bluebeard.DAL.Record;
-import com.davadzh.bluebeard.DTO.RecordDtos.UpdateRecordDto;
-
 public class RecordMappers {
 
 

@@ -5,14 +5,13 @@ import com.davadzh.bluebeard.BLL.Exceptions.BadRequestException;
 import com.davadzh.bluebeard.BLL.Exceptions.NotFoundException;
 import com.davadzh.bluebeard.BLL.Services.MasterService.IMasterService;
 import com.davadzh.bluebeard.BLL.Services.WorkTypeService.IWorkTypeService;
-import com.davadzh.bluebeard.DAL.Record;
+import com.davadzh.bluebeard.DAL.Record.Record;
 import com.davadzh.bluebeard.DTO.RecordDtos.*;
-import com.davadzh.bluebeard.Repositories.MasterRepository;
-import com.davadzh.bluebeard.Repositories.RecordRepository;
-import com.davadzh.bluebeard.Repositories.WorkTypeRepository;
+import com.davadzh.bluebeard.DAL.Master.MasterRepository;
+import com.davadzh.bluebeard.DAL.Record.RecordRepository;
+import com.davadzh.bluebeard.DAL.WorkType.WorkTypeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.NotAcceptableStatusException;
 
 import java.util.List;
 import java.util.stream.Collectors;

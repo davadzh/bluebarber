@@ -1,10 +1,11 @@
-package com.davadzh.bluebeard.DAL;
+package com.davadzh.bluebeard.DAL.Record;
+
+import com.davadzh.bluebeard.DAL.Master.Master;
+import com.davadzh.bluebeard.DAL.WorkType.WorkType;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.sql.Timestamp;
 import java.time.LocalDate;
-import java.util.Date;
 
 @Entity
 public class Record implements Serializable {
@@ -15,12 +16,12 @@ public class Record implements Serializable {
 //    @Column(nullable = false)
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "master_id", nullable = false)
-    Master master;
+Master master;
 
 //    @Column(nullable = false)
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "work_type_id", nullable = false)
-    WorkType workType;
+WorkType workType;
 
     @Column(nullable = false)
     LocalDate recordDate;

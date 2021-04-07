@@ -1,4 +1,7 @@
-package com.davadzh.bluebeard.DAL;
+package com.davadzh.bluebeard.DAL.MasterWorkType;
+
+import com.davadzh.bluebeard.DAL.Master.Master;
+import com.davadzh.bluebeard.DAL.WorkType.WorkType;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -14,12 +17,12 @@ public class MasterWorkType implements Serializable {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "master_id", nullable = false)
 //    @JsonIgnoreProperties(value = {"applications", "hibernateLazyInitializer"})
-    Master master;
+        Master master;
 
 //    @Column(nullable = false)
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "work_type_id", nullable = false)
-    WorkType workType;
+WorkType workType;
 
     public MasterWorkType() { }
 

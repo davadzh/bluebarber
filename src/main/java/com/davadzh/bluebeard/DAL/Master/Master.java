@@ -1,12 +1,12 @@
-package com.davadzh.bluebeard.DAL;
+package com.davadzh.bluebeard.DAL.Master;
 
+import com.davadzh.bluebeard.DAL.MasterWorkType.MasterWorkType;
+import com.davadzh.bluebeard.DAL.Record.Record;
 import com.davadzh.bluebeard.DTO.MasterDtos.AddMasterDto;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Table(name = "master")
