@@ -23,7 +23,7 @@ public class MasterController {
         this.masterService = masterService;
     }
 
-    @GetMapping("/getmasters")
+    @GetMapping("/getMasters")
     Response<List<Master>> getMasters() {
         var masters = masterService.getMasters();
 
@@ -37,21 +37,21 @@ public class MasterController {
         return new Response<>(masters);
     }
 
-    @PostMapping("/addmaster")
+    @PostMapping("/addMaster")
     Response<Master> addMaster(@RequestBody AddMasterDto addMasterDto) {
         var newMaster = masterService.addMaster(addMasterDto);
 
         return new Response<>(newMaster);
     }
 
-    @PostMapping("/updatemaster")
+    @PutMapping("/updateMaster")
     Response<Master> updateMaster(@RequestBody UpdateMasterDto updateMasterDto) {
         var master = masterService.updateMaster(updateMasterDto);
 
         return new Response<>(master);
     }
 
-    @DeleteMapping("/deletemaster")
+    @DeleteMapping("/deleteMaster")
     Response<Master> deleteMaster(@RequestBody DeleteMasterDto deleteMasterDto) {
         var master = masterService.deleteMaster(deleteMasterDto);
 

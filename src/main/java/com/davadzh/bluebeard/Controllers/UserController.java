@@ -1,18 +1,12 @@
 package com.davadzh.bluebeard.Controllers;
 
 import com.davadzh.bluebeard.BLL.Core.Response;
-import com.davadzh.bluebeard.BLL.Security.Jwt.JwtTokenProvider;
 import com.davadzh.bluebeard.BLL.Services.UserService.IUserService;
 import com.davadzh.bluebeard.DAL.User.User;
 import com.davadzh.bluebeard.DTO.UserDtos.UserGetTokenDto;
 import com.davadzh.bluebeard.DTO.UserDtos.UserLoginDto;
 import com.davadzh.bluebeard.DTO.UserDtos.UserRegisterDto;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.BadCredentialsException;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;

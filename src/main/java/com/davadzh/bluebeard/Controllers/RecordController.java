@@ -18,42 +18,42 @@ public class RecordController {
         this.recordService = recordService;
     }
 
-    @GetMapping ("/getrecords")
+    @GetMapping ("/getRecords")
     Response<List<Record>> getRecords() {
         var records = recordService.getRecords();
 
         return new Response<>(records);
     }
 
-    @PostMapping("/addrecord")
+    @PostMapping("/addRecord")
     Response<Record> addRecord(@RequestBody AddRecordDto addRecordDto) {
         var record = recordService.addRecord(addRecordDto);
 
         return new Response<>(record);
     }
 
-    @PutMapping("/updaterecord")
-    Response<Record> updateRecord(@RequestBody UpdateRecordDto updateRecordDto) {
-        var record = recordService.updateRecord(updateRecordDto);
-
-        return new Response<>(record);
-    }
-
-    @PostMapping("/addcustomertorecord")
+    @PostMapping("/addCustomerToRecord")
     Response<Record> addCustomerToRecord(@RequestBody AddCustomerToRecordDto addCustomerToRecordDto) {
         var record = recordService.addCustomerToRecord(addCustomerToRecordDto);
 
         return new Response<>(record);
     }
 
-    @PostMapping("/cancelcustomerrecord")
+    @PostMapping("/cancelCustomerRecord")
     Response<Record> cancelCustomerRecord(@RequestBody CancelCustomerRecordDto cancelCustomerRecordDto) {
         var record = recordService.cancelCustomerRecord(cancelCustomerRecordDto);
 
         return new Response<>(record);
     }
 
-    @DeleteMapping("/deleterecord")
+    @PutMapping("/updateRecord")
+    Response<Record> updateRecord(@RequestBody UpdateRecordDto updateRecordDto) {
+        var record = recordService.updateRecord(updateRecordDto);
+
+        return new Response<>(record);
+    }
+
+    @DeleteMapping("/deleteRecord")
     Response<Record> deleteRecord(@RequestBody DeleteRecordDto deleteRecordDto) {
         var record = recordService.deleteRecord(deleteRecordDto);
 

@@ -25,14 +25,6 @@ public class WorkType extends BaseEntity implements Serializable {
     @OneToMany(mappedBy = "workType", cascade = CascadeType.ALL, orphanRemoval = true)
     List<Record> records;
 
-//    public List<MasterWorkType> getMasterWorkTypes() {
-//        return masterWorkTypes;
-//    }
-//
-//    public void setMasterWorkTypes(List<MasterWorkType> masterWorkTypes) {
-//        this.masterWorkTypes = masterWorkTypes;
-//    }
-
     public WorkType() {
     }
 

@@ -11,19 +11,16 @@ import java.io.Serializable;
 @Table(name = "master_work_type", schema = "public")
 public class MasterWorkType implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     Long id;
 
-//    @Column(nullable = false)
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "master_id", nullable = false)
-//    @JsonIgnoreProperties(value = {"applications", "hibernateLazyInitializer"})
-        Master master;
+    Master master;
 
-//    @Column(nullable = false)
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "work_type_id", nullable = false)
-WorkType workType;
+    WorkType workType;
 
     public MasterWorkType() { }
 

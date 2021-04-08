@@ -3,13 +3,9 @@ package com.davadzh.bluebeard.BLL.Core;
 import com.sun.istack.Nullable;
 
 public class Response<T> {
-    @Nullable
-    T data;
-
-    boolean hasError;
-
-    @Nullable
-    String error;
+    private T data;
+    private boolean hasError;
+    private String error;
 
     public Response(T data) {
         this.data = data;

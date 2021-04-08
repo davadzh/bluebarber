@@ -12,13 +12,8 @@ import java.util.List;
 @Entity
 @Table(name = "master", schema = "public")
 public class Master extends BaseEntity implements Serializable {
-    @Column(nullable = false)
     String fullName;
-
-    @Column(nullable = false)
     int age;
-
-    @Column(nullable = false)
     String position;
 
     @OneToMany(mappedBy = "master", cascade = CascadeType.ALL, orphanRemoval = true)

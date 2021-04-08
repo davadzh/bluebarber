@@ -16,33 +16,19 @@ import java.util.TimeZone;
 @Entity
 @Table(name = "record", schema = "public")
 public class Record extends BaseEntity implements Serializable {
-
-//    @Column(nullable = false)
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "master_id", nullable = false)
     Master master;
 
-//    @Column(nullable = false)
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "work_type_id", nullable = false)
     WorkType workType;
 
-    @Column(nullable = false)
     Calendar recordDate;
-
-    @Column(nullable = true)
     String clientName;
-
-    @Column(nullable = true)
     String clientPhone;
-
-    @Column(nullable = true)
     String clientEmail;
-
-    @Column(nullable = false)
     boolean isConfirmed = false;
-
-    @Column(nullable = false)
     boolean isCanceled = false;
 
     public Record(){}

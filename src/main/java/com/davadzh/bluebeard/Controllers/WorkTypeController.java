@@ -22,14 +22,14 @@ public class WorkTypeController {
         this.workTypeService = workTypeService;
     }
 
-    @GetMapping ("/getworktypes")
+    @GetMapping ("/getWorkTypes")
     Response<List<WorkType>> getWorkTypes() {
         var workTypes = workTypeService.getWorkTypes();
 
         return new Response<>(workTypes);
     }
 
-    @PostMapping("/addworktype")
+    @PostMapping("/addWorkType")
     Response<WorkType> addWorkType(@RequestBody AddWorkTypeDto addWorkTypeDto) {
         var newWorkType = workTypeService.addWorkType(addWorkTypeDto);
 
@@ -43,14 +43,14 @@ public class WorkTypeController {
         return new Response<>(workTypes);
     }
 
-    @PutMapping("/updateworktype")
+    @PutMapping("/updateWorkType")
     Response<WorkType> updateWorkType(@RequestBody UpdateWorkTypeDto updateWorkTypeDto) {
         var workType = workTypeService.updateWorkType(updateWorkTypeDto);
 
         return new Response<>(workType);
     }
 
-    @DeleteMapping("/deleteworktype")
+    @DeleteMapping("/deleteWorkType")
     Response<WorkType> deleteWorkType(@RequestBody DeleteWorkTypeDto deleteWorkTypeDto) {
         var workType = workTypeService.deleteWorkType(deleteWorkTypeDto);
 
