@@ -1,7 +1,11 @@
 package com.davadzh.bluebeard.BLL.Security.Jwt;
 
+import com.davadzh.bluebeard.BLL.Constants.ExceptionMessages;
+import com.davadzh.bluebeard.BLL.Core.AppExceptionHandler;
+import com.davadzh.bluebeard.BLL.Exceptions.UnauthorizedException;
 import com.davadzh.bluebeard.DAL.Role.Role;
 import io.jsonwebtoken.*;
+import org.aspectj.apache.bcel.ExceptionConstants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -85,7 +89,7 @@ public class JwtTokenProvider {
 
             return true;
         } catch (JwtException | IllegalArgumentException e) {
-            throw new JwtAuthenticationException("JWT token is expired or invalid");
+            throw new UnauthorizedException(ExceptionMessages.UNAUTHORIZED);
         }
     }
 

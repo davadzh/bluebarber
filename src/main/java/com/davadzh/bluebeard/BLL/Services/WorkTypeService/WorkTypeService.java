@@ -6,6 +6,7 @@ import com.davadzh.bluebeard.DAL.WorkType.WorkType;
 import com.davadzh.bluebeard.DTO.MasterDtos.GetWorkTypesByMasterIdDto;
 import com.davadzh.bluebeard.DTO.WorkTypeDtos.AddWorkTypeDto;
 import com.davadzh.bluebeard.DTO.WorkTypeDtos.DeleteWorkTypeDto;
+import com.davadzh.bluebeard.DTO.WorkTypeDtos.GetWorkTypeByIdDto;
 import com.davadzh.bluebeard.DTO.WorkTypeDtos.UpdateWorkTypeDto;
 import com.davadzh.bluebeard.DAL.MasterWorkType.MasterWorkTypeRepository;
 import com.davadzh.bluebeard.DAL.WorkType.WorkTypeRepository;
@@ -45,6 +46,16 @@ public class WorkTypeService implements IWorkTypeService {
         workTypeRepository.save(newWorkType);
 
         return newWorkType;
+    }
+
+    @Override
+    public WorkType getWorkTypeById(GetWorkTypeByIdDto getWorkTypeByIdDto) {
+        var workType = workTypeRepository.findById(getWorkTypeByIdDto.workTypeId);
+
+        if (workType.isEmpty())
+            throw new NotFoundException(ExceptionMessages.WORKTYPE_NOT_FOUND);
+
+        return workType.get();
     }
 
 

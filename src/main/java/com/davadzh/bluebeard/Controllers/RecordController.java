@@ -2,7 +2,9 @@ package com.davadzh.bluebeard.Controllers;
 import com.davadzh.bluebeard.BLL.Core.Response;
 import com.davadzh.bluebeard.BLL.Services.RecordService.IRecordService;
 import com.davadzh.bluebeard.DAL.Record.Record;
+import com.davadzh.bluebeard.DAL.WorkType.WorkType;
 import com.davadzh.bluebeard.DTO.RecordDtos.*;
+import com.davadzh.bluebeard.DTO.WorkTypeDtos.GetWorkTypeByIdDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.*;
@@ -32,6 +34,13 @@ public class RecordController {
         return new Response<>(record);
     }
 
+    @PostMapping("/getRecordById")
+    Response<Record> getRecordById(@RequestBody GetRecordByIdDto getRecordByIdDto) {
+        var newRecord = recordService.getRecordById(getRecordByIdDto);
+
+        return new Response<>(newRecord);
+    }
+
     @PostMapping("/addCustomerToRecord")
     Response<Record> addCustomerToRecord(@RequestBody AddCustomerToRecordDto addCustomerToRecordDto) {
         var record = recordService.addCustomerToRecord(addCustomerToRecordDto);
@@ -46,14 +55,14 @@ public class RecordController {
         return new Response<>(record);
     }
 
-    @PutMapping("/updateRecord")
+    @PostMapping("/updateRecord")
     Response<Record> updateRecord(@RequestBody UpdateRecordDto updateRecordDto) {
         var record = recordService.updateRecord(updateRecordDto);
 
         return new Response<>(record);
     }
 
-    @DeleteMapping("/deleteRecord")
+    @PostMapping("/deleteRecord")
     Response<Record> deleteRecord(@RequestBody DeleteRecordDto deleteRecordDto) {
         var record = recordService.deleteRecord(deleteRecordDto);
 

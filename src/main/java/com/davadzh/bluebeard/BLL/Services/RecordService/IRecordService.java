@@ -10,6 +10,7 @@ import java.util.List;
 public interface IRecordService {
     List<Record> getRecords();
     Record addRecord(AddRecordDto record);
+    Record getRecordById(GetRecordByIdDto getRecordByIdDto);
     Record addCustomerToRecord(AddCustomerToRecordDto addCustomerToRecordDto);
     Record cancelCustomerRecord(CancelCustomerRecordDto cancelCustomerRecordDto);
     Record updateRecord(UpdateRecordDto updateRecordDto);

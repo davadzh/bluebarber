@@ -47,14 +47,14 @@ public class UserService implements IUserService {
 
     @Override
     public User register(UserRegisterDto userRegisterDto) {
-        Role roleUser = roleRepository.findByName("ROLE_USER");
+        Role roleUser = roleRepository.findByName("ADMIN");
         List<Role> userRoles = new ArrayList<>();
         userRoles.add(roleUser);
 
         var newUser = new User(userRegisterDto);
 
         newUser.setPassword(passwordEncoder.encode(newUser.getPassword()));
-//        newUser.setRoles(userRoles);
+        newUser.setRoles(userRoles);
         newUser.setStatus(UserStatusEnum.ACTIVE);
 
         userRepository.save(newUser);

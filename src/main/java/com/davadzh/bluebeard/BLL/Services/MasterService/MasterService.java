@@ -5,6 +5,7 @@ import com.davadzh.bluebeard.BLL.Exceptions.NotFoundException;
 import com.davadzh.bluebeard.DAL.Master.Master;
 import com.davadzh.bluebeard.DTO.MasterDtos.AddMasterDto;
 import com.davadzh.bluebeard.DTO.MasterDtos.DeleteMasterDto;
+import com.davadzh.bluebeard.DTO.MasterDtos.GetMasterByIdDto;
 import com.davadzh.bluebeard.DTO.MasterDtos.UpdateMasterDto;
 import com.davadzh.bluebeard.DTO.WorkTypeDtos.GetMastersByWorkTypeIdDto;
 import com.davadzh.bluebeard.DAL.Master.MasterRepository;
@@ -36,6 +37,16 @@ public class MasterService implements IMasterService {
     @Override
     public List<Master> getMasters() {
         return masterRepository.findAll();
+    }
+
+    @Override
+    public Master getMasterById(GetMasterByIdDto getMasterByIdDto) {
+        var master = masterRepository.findById(getMasterByIdDto.masterId);
+
+        if (master.isEmpty())
+            throw new NotFoundException(ExceptionMessages.MASTER_NOT_FOUND);
+
+        return master.get();
     }
 
 

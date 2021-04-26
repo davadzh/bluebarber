@@ -55,19 +55,19 @@ public class RecordService implements IRecordService {
         var master = masterService.findMasterById(record.masterId)
                 .orElseThrow(() -> new NotFoundException(ExceptionMessages.MASTER_NOT_FOUND));
 
-        var isMasterBusy = recordRepository
-                .findAll()
-                .stream()
-                .filter(rec -> rec.getMaster().getId().equals(record.masterId))
-                .map(rec -> rec.getRecordDate().get(Calendar.YEAR) == record.recordDate.get(Calendar.YEAR)
-                        && rec.getRecordDate().get(Calendar.MONTH) == record.recordDate.get(Calendar.MONTH)
-                        && rec.getRecordDate().get(Calendar.DAY_OF_MONTH) == record.recordDate.get(Calendar.DAY_OF_MONTH)
-                        && rec.getRecordDate().get(Calendar.HOUR_OF_DAY) == record.recordDate.get(Calendar.HOUR_OF_DAY)
-                        && rec.getRecordDate().get(Calendar.MINUTE) == record.recordDate.get(Calendar.MINUTE))
-                .findAny();
-
-        if (isMasterBusy.isPresent())
-            throw new BadRequestException(ExceptionMessages.MASTER_IS_BUSY);
+//        var isMasterBusy = recordRepository
+//                .findAll()
+//                .stream()
+//                .filter(rec -> rec.getMaster().getId().equals(record.masterId))
+//                .map(rec -> rec.getRecordDate().get(Calendar.YEAR) == record.recordDate.get(Calendar.YEAR)
+//                        && rec.getRecordDate().get(Calendar.MONTH) == record.recordDate.get(Calendar.MONTH)
+//                        && rec.getRecordDate().get(Calendar.DAY_OF_MONTH) == record.recordDate.get(Calendar.DAY_OF_MONTH)
+//                        && rec.getRecordDate().get(Calendar.HOUR_OF_DAY) == record.recordDate.get(Calendar.HOUR_OF_DAY)
+//                        && rec.getRecordDate().get(Calendar.MINUTE) == record.recordDate.get(Calendar.MINUTE))
+//                .findAny();
+//
+//        if (isMasterBusy.isPresent())
+//            throw new BadRequestException(ExceptionMessages.MASTER_IS_BUSY);
 
         var workType = workTypeService.findWorkTypeById(record.workTypeId)
                 .orElseThrow(() -> new NotFoundException(ExceptionMessages.WORKTYPE_NOT_FOUND));
@@ -86,6 +86,16 @@ public class RecordService implements IRecordService {
         recordRepository.save(newRecord);
 
         return newRecord;
+    }
+
+    @Override
+    public Record getRecordById(GetRecordByIdDto getRecordByIdDto) {
+        var record = recordRepository.findById(getRecordByIdDto.recordId);
+
+        if (record.isEmpty())
+            throw new NotFoundException(ExceptionMessages.RECORD_NOT_FOUND);
+
+        return record.get();
     }
 
 
@@ -119,6 +129,9 @@ public class RecordService implements IRecordService {
 
         record.setConfirmed(false);
         record.setCanceled(true);
+        record.setClientName(null);
+        record.setClientPhone(null);
+        record.setClientEmail(null);
         record.setModifyDate(LocalDateTime.now(Clock.systemUTC()));
 
         recordRepository.save(record);

@@ -5,6 +5,7 @@ import com.davadzh.bluebeard.BLL.Services.MasterService.IMasterService;
 import com.davadzh.bluebeard.DAL.Master.Master;
 import com.davadzh.bluebeard.DTO.MasterDtos.AddMasterDto;
 import com.davadzh.bluebeard.DTO.MasterDtos.DeleteMasterDto;
+import com.davadzh.bluebeard.DTO.MasterDtos.GetMasterByIdDto;
 import com.davadzh.bluebeard.DTO.MasterDtos.UpdateMasterDto;
 import com.davadzh.bluebeard.DTO.WorkTypeDtos.GetMastersByWorkTypeIdDto;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +38,13 @@ public class MasterController {
         return new Response<>(masters);
     }
 
+    @PostMapping("/getMasterById")
+    Response<Master> getMasterById(@RequestBody GetMasterByIdDto getMasterByIdDto) {
+        var newMaster = masterService.getMasterById(getMasterByIdDto);
+
+        return new Response<>(newMaster);
+    }
+
     @PostMapping("/addMaster")
     Response<Master> addMaster(@RequestBody AddMasterDto addMasterDto) {
         var newMaster = masterService.addMaster(addMasterDto);
@@ -44,14 +52,14 @@ public class MasterController {
         return new Response<>(newMaster);
     }
 
-    @PutMapping("/updateMaster")
+    @PostMapping("/updateMaster")
     Response<Master> updateMaster(@RequestBody UpdateMasterDto updateMasterDto) {
         var master = masterService.updateMaster(updateMasterDto);
 
         return new Response<>(master);
     }
 
-    @DeleteMapping("/deleteMaster")
+    @PostMapping("/deleteMaster")
     Response<Master> deleteMaster(@RequestBody DeleteMasterDto deleteMasterDto) {
         var master = masterService.deleteMaster(deleteMasterDto);
 
